@@ -4,13 +4,13 @@ import java.util.UUID;
 
 public class WalletResponse {
     private UUID walletId;
-    private OperationType operationType;
-    private Integer amount;
+    private Integer balance;
+    private String message;
 
-    public WalletResponse(UUID walletId, OperationType operationType, Integer amount) {
+    public WalletResponse(UUID walletId, Integer balance, String message) {
         this.walletId = walletId;
-        this.operationType = operationType;
-        this.amount = amount;
+        this.balance = balance;
+        this.message = message;
     }
 
     public UUID getWalletId() {
@@ -21,19 +21,19 @@ public class WalletResponse {
         this.walletId = walletId;
     }
 
-    public OperationType getOperationType() {
-        return operationType;
+    public Integer getBalance() {
+        return balance;
     }
 
-    public void setOperationType(OperationType operationType) {
-        this.operationType = operationType;
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public String getMessage() {
+        return message;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

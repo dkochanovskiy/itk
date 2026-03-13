@@ -3,7 +3,7 @@ services:
     image: postgres:16
     container_name: db
     environment:
-      POSTGRES_DB: postgres
+      POSTGRES_DB: itk
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
@@ -17,10 +17,6 @@ services:
     container_name: app
     depends_on:
       - postgres
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/itk
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
     ports:
       - "8080:8080"
     restart: unless-stopped

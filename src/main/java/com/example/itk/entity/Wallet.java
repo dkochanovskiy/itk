@@ -1,6 +1,5 @@
 package com.example.itk.entity;
 
-import com.example.itk.dto.OperationType;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -9,15 +8,18 @@ import java.util.UUID;
 public class Wallet {
 
     @Id
-    @Column(name = "walletId")
+    @Column(name = "wallet_id")
     private UUID walletId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "operationType", nullable = false)
-    private OperationType operationType;
 
     @Column(name = "amount", nullable = false)
     private Integer amount;
+
+    public Wallet() {}
+
+    public Wallet(UUID walletId) {
+        this.walletId = walletId;
+        this.amount = 0;
+    }
 
     public UUID getWalletId() {
         return walletId;
@@ -25,14 +27,6 @@ public class Wallet {
 
     public void setWalletId(UUID walletId) {
         this.walletId = walletId;
-    }
-
-    public OperationType getOperationType() {
-        return operationType;
-    }
-
-    public void setOperationType(OperationType operationType) {
-        this.operationType = operationType;
     }
 
     public Integer getAmount() {
