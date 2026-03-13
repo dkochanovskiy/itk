@@ -4,6 +4,7 @@ import com.example.itk.dto.BalanceResponse;
 import com.example.itk.dto.WalletRequest;
 import com.example.itk.dto.WalletResponse;
 import com.example.itk.service.WalletService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +22,19 @@ public class WalletController {
     }
 
     @PostMapping
-    public ResponseEntity<WalletResponse> save(
-            @RequestBody WalletRequest request) {
+    public ResponseEntity<WalletResponse> save(@Valid @RequestBody WalletRequest request) {
 
         WalletResponse response = walletService.save(request);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{walletId}/balance")
     public ResponseEntity<BalanceResponse> getWalletBalance(@PathVariable UUID walletId) {
+
         Integer balance = walletService.getBalanceByWalletId(walletId);
         BalanceResponse response = new BalanceResponse(walletId, balance);
+
         return ResponseEntity.ok(response);
     }
 }

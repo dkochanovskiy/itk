@@ -8,6 +8,7 @@ public class BalanceResponse {
     private Integer balance;
 
     public BalanceResponse(UUID walletId, Integer balance) {
+
         this.walletId = walletId;
         this.balance = balance;
     }
